@@ -1,0 +1,43 @@
+class Counter {
+  constructor(element, time) {
+    this.element = element
+    this.time = time
+    this.resetBtn = element.querySelector('.reset')
+    this.increaseBtn = element.querySelector('.increase')
+    this.decreaseBtn = element.querySelector('.decrease')
+    this.valueDOM = element.querySelector('.value')
+    this.valueDOM.textContent = this.time
+
+    //bind this to all functions
+    this.reset = this.reset.bind(this)
+    this.increase = this.increase.bind(this)
+    this.decrease = this.decrease.bind(this)
+
+    this.resetBtn.addEventListener('click', this.reset)
+    this.increaseBtn.addEventListener('click', this.increase)
+    this.decreaseBtn.addEventListener('click', this.decrease)
+  }
+  reset() {
+    this.time = 0
+    this.valueDOM.textContent = this.time
+  }
+  increase() {
+    this.time++
+    this.valueDOM.textContent = this.time
+  }
+  decrease() {
+    this.time--
+    this.valueDOM.textContent = this.time
+  }
+}
+
+function getElement(selection) {
+  const element = document.querySelector(selection)
+  if (element) {
+    return element
+  }
+  throw new Error(`There is no such "${selection}" element`)
+}
+
+const firstCounter = new Counter(getElement('.first-counter'), 100)
+const secondCounter = new Counter(getElement('.second-counter'), 200)
