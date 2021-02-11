@@ -8,6 +8,19 @@ function Counter(element, time) {
   this.valueDOM.textContent = this.time
 }
 
+Counter.prototype.reset = function () {
+  this.value = 0
+  this.valueDOM.textContent = this.value
+}
+Counter.prototype.decrease = function () {
+  this.value--
+  this.valueDOM.textContent = this.value
+}
+Counter.prototype.increase = function () {
+  this.value++
+  this.valueDOM.textContent = this.value
+}
+
 function getElement(selection) {
   const element = document.querySelector(selection)
   if (element) {
