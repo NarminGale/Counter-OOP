@@ -1,5 +1,11 @@
 function Counter(element, time) {
-  console.log(element, time)
+  this.element = element
+  this.time = time
+  this.resetBtn = element.querySelector('.reset')
+  this.increaseBtn = element.querySelector('.increase')
+  this.decreaseBtn = element.querySelector('.decrease')
+  this.valueDOM = element.querySelector('.value')
+  this.valueDOM.textContent = this.time
 }
 
 function getElement(selection) {
