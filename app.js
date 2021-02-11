@@ -6,19 +6,28 @@ function Counter(element, time) {
   this.decreaseBtn = element.querySelector('.decrease')
   this.valueDOM = element.querySelector('.value')
   this.valueDOM.textContent = this.time
+
+  //bind this to all functions
+  this.reset = this.reset.bind(this)
+  this.increase = this.increase.bind(this)
+  this.decrease = this.decrease.bind(this)
+
+  this.resetBtn.addEventListener('click', this.reset)
+  this.increaseBtn.addEventListener('click', this.increase)
+  this.decreaseBtn.addEventListener('click', this.decrease)
 }
 
 Counter.prototype.reset = function () {
-  this.value = 0
-  this.valueDOM.textContent = this.value
+  this.time = 0
+  this.valueDOM.textContent = this.time
 }
 Counter.prototype.decrease = function () {
-  this.value--
-  this.valueDOM.textContent = this.value
+  this.time--
+  this.valueDOM.textContent = this.time
 }
 Counter.prototype.increase = function () {
-  this.value++
-  this.valueDOM.textContent = this.value
+  this.time++
+  this.valueDOM.textContent = this.time
 }
 
 function getElement(selection) {
